@@ -80,7 +80,7 @@ xdescribe("DELETE /todos/:id", () => {
   });
 });
 
-xdescribe("POST /todos", () => {
+describe("POST /todos", () => {
   beforeEach(() => {
     provider
       // This describes the server state at the moment of the request
