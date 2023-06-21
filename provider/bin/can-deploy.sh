@@ -10,5 +10,5 @@ docker run --rm \
 		pactfoundation/pact-cli:latest \
   	pact-broker can-i-deploy \
 		--pacticipant=MyProvider \
-		--to-environment=test\
+		--to-environment=${DEPLOY_ENV}\
  		--version=$(git rev-parse --short HEAD)
