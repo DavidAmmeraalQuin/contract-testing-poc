@@ -9,9 +9,9 @@
     "test": "node bin/perform-contract-tests.js",
     "ci:contract:publish": "./bin/publish-contract.sh",
     "ci:can-deploy:test": "DEPLOY_ENV=test ./bin/can-deploy.sh",
-    "ci:can-deploy:prod": "DEPLOY_ENV=production ./bin/can-deploy.sh",
+    "ci:can-deploy:prod": "DEPLOY_ENV=prod ./bin/can-deploy.sh",
     "ci:deploy:test": "DEPLOY_ENV=test ./bin/deploy.sh",
-    "ci:deploy:prod": "DEPLOY_ENV=production ./bin/deploy.sh"
+    "ci:deploy:prod": "DEPLOY_ENV=prod ./bin/deploy.sh"
   },
   "dependencies": {
     "react": "^18.2.0",
