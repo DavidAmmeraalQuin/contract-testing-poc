@@ -32,6 +32,11 @@ describe("Pact Verification", () => {
       provider: "MyProvider",
       publishVerificationResult: process.env.CI === "true",
       providerVersion: revision,
+      consumerVersionSelectors: [
+        {
+          mainBranch: true,
+        },
+      ],
       includeWipPactsSince: "2020-01-01",
       enablePending: true,
     }).verifyProvider();
