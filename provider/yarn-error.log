@@ -1,0 +1,31 @@
+Arguments: 
+  /Users/davidammeraal/.nvm/versions/node/v18.14.0/bin/node /Users/davidammeraal/.nvm/versions/node/v18.14.0/bin/yarn init
+
+PATH: 
+  /Users/davidammeraal/.rbenv/shims:/Users/davidammeraal/.nvm/versions/node/v18.14.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Users/davidammeraal/.rbenv/shims:/Users/davidammeraal/.nvm/versions/node/v18.14.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/davidammeraal/Library/Android/sdk/platform-tools:/Users/davidammeraal/Library/Android/sdk/tools:/Users/davidammeraal/Library/Android/sdk/tools/bin:/Users/davidammeraal/Library/Android/sdk/emulator:/Users/davidammeraal/Library/Android/sdk/platform-tools:/Users/davidammeraal/Library/Android/sdk/tools:/Users/davidammeraal/Library/Android/sdk/tools/bin:/Users/davidammeraal/Library/Android/sdk/emulator
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  18.14.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  SyntaxError: /Users/davidammeraal/Documents/workspace/contract-testing-poc/packages/provider/package.json: Unexpected end of JSON input
+      at JSON.parse (<anonymous>)
+      at /Users/davidammeraal/.nvm/versions/node/v18.14.0/lib/node_modules/yarn/lib/cli.js:1629:59
+      at Generator.next (<anonymous>)
+      at step (/Users/davidammeraal/.nvm/versions/node/v18.14.0/lib/node_modules/yarn/lib/cli.js:310:30)
+      at /Users/davidammeraal/.nvm/versions/node/v18.14.0/lib/node_modules/yarn/lib/cli.js:321:13
+
+npm manifest: 
+  
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

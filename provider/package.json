@@ -1,0 +1,21 @@
+{
+  "name": "provider",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "node index.js",
+    "test": "yarn jest",
+    "ci:contract:verify": "CI=true yarn jest provider/contract.spec.js",
+    "ci:deploy:test": "CI=true ./bin/deploy-test.sh",
+    "ci:can-deploy:test": "CI=true ./bin/can-deploy.sh"
+  },
+  "dependencies": {
+    "fastify": "^4.15.0",
+    "yargs": "^17.7.2"
+  },
+  "devDependencies": {
+    "@pact-foundation/pact": "^11.0.2",
+    "jest": "^29.5.0"
+  }
+}
