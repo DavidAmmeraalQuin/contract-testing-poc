@@ -84,4 +84,5 @@ const cleanContracts = async () => {
 
   await executeContractTest();
   await executePublishContract();
+  await cleanContracts();
 })();
