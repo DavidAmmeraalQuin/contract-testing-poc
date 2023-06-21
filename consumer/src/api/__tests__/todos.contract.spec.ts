@@ -80,6 +80,8 @@ xdescribe("DELETE /todos/:id", () => {
   });
 });
 
+const itif = (condition: boolean) => (condition ? it : it.skip);
+
 describe("POST /todos", () => {
   beforeEach(() => {
     provider
@@ -107,14 +109,17 @@ describe("POST /todos", () => {
       });
   });
 
-  it("responds with HTTP 200", async () => {
-    await provider.executeTest(async (mockServer) => {
-      const todosService = new ToDosApi({ baseUrl: mockServer.url });
+  itif(featureFlags.getFeatureFlag("contract_create_todo"))(
+    "responds with HTTP 200",
+    async () => {
+      await provider.executeTest(async (mockServer) => {
+        const todosService = new ToDosApi({ baseUrl: mockServer.url });
 
-      const result = await todosService.createTodo({
-        description: "some todo description",
+        const result = await todosService.createTodo({
+          description: "some todo description",
+        });
+        expect(result.id).toBe("some-id");
       });
-      expect(result.id).toBe("some-id");
-    });
-  });
+    }
+  );
 });
