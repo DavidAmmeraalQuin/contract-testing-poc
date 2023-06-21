@@ -32,9 +32,6 @@ describe("Pact Verification", () => {
       provider: "MyProvider",
       publishVerificationResult: process.env.CI === "true",
       providerVersion: revision,
-      pactUrls: [
-        `http://localhost:9292/pacts/provider/MyProvider/consumer/MyConsumer/version/1fa2ac2+contract_todo_author`,
-      ],
       includeWipPactsSince: "2020-01-01",
       enablePending: true,
     }).verifyProvider();
