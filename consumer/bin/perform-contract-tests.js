@@ -62,12 +62,24 @@ const executePublishContract = async (contractToggle) => {
   });
 };
 
+const readDir = promisify(fs.readdir);
+const unlink = promisify(fs.unlink);
+const CONTRACTS_DIR = path.resolve(__dirname, "../contracts");
+
+const cleanContracts = async () => {
+  for (const file of await readDir(CONTRACTS_DIR)) {
+    await unlink(path.join(CONTRACTS_DIR, file));
+  }
+};
+
 (async () => {
   const toggles = await fetchContractToggles();
+
   for (const [contract] of Object.entries(toggles)) {
     console.log(`Performing contract test for ${contract}`);
     await executeContractTest(contract);
     await executePublishContract(contract);
+    await cleanContracts();
   }
 
   await executeContractTest();
