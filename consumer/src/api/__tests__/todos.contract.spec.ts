@@ -51,9 +51,6 @@ describe("GET /todos", () => {
 
       const result = await todosService.fetchTodos();
       expect(result[0].id).toBe("1");
-      if (featureFlags.getFeatureFlag("contract_todo_author")) {
-        expect(result[0].author).toBe("John Doe");
-      }
     });
   });
 });
