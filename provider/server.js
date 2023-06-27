@@ -1,4 +1,7 @@
 const { todosService } = require("./todos-service");
+const crypto = require("crypto");
+
+const getId = () => crypto.randomBytes(16).toString("hex");
 
 // Require the framework and instantiate it
 const fastify = require("fastify")({ logger: true });
@@ -8,9 +11,10 @@ fastify.get("/todos", async (request, reply) => {
 });
 
 fastify.post("/todos", async (req, reply) => {
-  todosService.addTodo(req.body);
+  const id = getId();
+  todosService.addTodo({ ...req.body, id });
   reply.send({
-    id: req.body.id,
+    id,
   });
 });
 
