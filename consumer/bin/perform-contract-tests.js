@@ -42,15 +42,22 @@ const getGitRevision = () => {
 const executePublishContract = async (contractToggle) => {
   const { spawn } = require("child_process");
 
+  const BRANCH =
+    contractToggle !== undefined ? `main+${contractToggle}` : `main`;
+
   const CONTRACT_VERSION =
     contractToggle !== undefined
       ? `${getGitRevision()}+${contractToggle}`
       : getGitRevision();
 
-  console.log("Publishing contract version: ", CONTRACT_VERSION);
+  console.log(
+    "Publishing contract version: ",
+    CONTRACT_VERSION,
+    " for branch: " + BRANCH
+  );
 
   const proc = spawn("yarn", ["ci:contract:publish"], {
-    env: { ...process.env, CONTRACT_VERSION },
+    env: { ...process.env, CONTRACT_VERSION, BRANCH },
   });
   proc.stdout.pipe(process.stdout);
   proc.stderr.pipe(process.stderr);

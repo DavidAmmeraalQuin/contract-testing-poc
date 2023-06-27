@@ -11,5 +11,5 @@ docker run --rm \
   pactfoundation/pact-cli:latest \
   publish \
   ${PWD}/contracts \
-  --branch=main \
+  --branch=${BRANCH} \
   --consumer-app-version=${CONTRACT_VERSION}
