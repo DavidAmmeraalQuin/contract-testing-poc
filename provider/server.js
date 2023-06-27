@@ -14,7 +14,7 @@ fastify.post("/todos", async (req, reply) => {
   const id = getId();
   todosService.addTodo({ ...req.body, id });
   reply.send({
-    id,
+    id: false,
   });
 });
 
