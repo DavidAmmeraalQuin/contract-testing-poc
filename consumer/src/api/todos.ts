@@ -22,7 +22,6 @@ export class ToDosApi {
     return response;
   }
 
-  /*
   async createTodo(data: Pick<ToDo, "description">) {
     const response = await (
       await fetch(`${this.baseUrl}/todos`, {
@@ -37,7 +36,6 @@ export class ToDosApi {
 
     return response;
   }
-  */
 
   async deleteTodoById(id: string) {
     await fetch(`${this.baseUrl}/todos/${id}`, {
