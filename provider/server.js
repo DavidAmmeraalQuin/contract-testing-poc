@@ -9,6 +9,9 @@ fastify.get("/todos", async (request, reply) => {
 
 fastify.post("/todos", async (req, reply) => {
   todosService.addTodo(req.body);
+  reply.send({
+    id: req.body.id,
+  });
 });
 
 const listen = async (port, callback) => {
