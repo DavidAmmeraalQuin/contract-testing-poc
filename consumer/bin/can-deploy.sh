@@ -1,7 +1,14 @@
 export PACT_BROKER_BASE_URL="http://localhost:9292"
 export PACT_BROKER_TOKEN="0GBR0amkEdHEsixDY8ASuA"
 
-# VERSION=$(git rev-parse --short HEAD)
+DEFAULT_VERSION=$(git rev-parse --short HEAD)
+
+if [ -z ${VERSION+x} ];
+then
+	VERSION=$DEFAULT_VERSION
+else
+	echo "Checking if we can deploy $VERSION"
+fi
 
 docker run --rm \
  	--network="host" \
@@ -12,4 +19,4 @@ docker run --rm \
   	pact-broker can-i-deploy\
 		--pacticipant=MyConsumer\
 		--to-environment=${DEPLOY_ENV} \
- 		--version=$(git rev-parse --short HEAD)
+ 		--version=${VERSION}
