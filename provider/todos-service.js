@@ -14,6 +14,9 @@ const todosService = {
   getTodos() {
     return todos;
   },
+  addTodo(todo) {
+    todos.push(todo);
+  },
 };
 
 module.exports = {
