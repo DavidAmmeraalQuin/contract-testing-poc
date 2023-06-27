@@ -83,7 +83,7 @@ xdescribe("DELETE /todos/:id", () => {
 const describeIf = (condition: boolean) => (condition ? describe : xdescribe);
 const xDescribeIf = (condition: boolean) => xdescribe;
 
-xDescribeIf(featureFlags.getFeatureFlag("contract_create_todo"))(
+describeIf(featureFlags.getFeatureFlag("contract_create_todo"))(
   "POST /todos",
   () => {
     beforeEach(() => {
