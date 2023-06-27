@@ -7,6 +7,8 @@ const revision = require("child_process")
   .toString()
   .trim();
 
+const BRANCH = process.env.BRANCH;
+
 const stateHandlers = {
   "Theres a list of TODO's": () => {
     setTodos([
@@ -33,9 +35,13 @@ describe("Pact Verification", () => {
       publishVerificationResult: process.env.CI === "true",
       providerVersion: revision,
       consumerVersionSelectors: [
-        {
-          mainBranch: true,
-        },
+        BRANCH
+          ? {
+              branch: BRANCH,
+            }
+          : {
+              mainBranch: true,
+            },
       ],
       includeWipPactsSince: "2020-01-01",
       enablePending: true,
