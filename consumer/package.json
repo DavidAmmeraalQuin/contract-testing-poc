@@ -13,7 +13,9 @@
     "ci:deploy:test": "DEPLOY_ENV=test ./bin/deploy.sh",
     "ci:deploy:prod": "DEPLOY_ENV=production ./bin/deploy.sh",
     "ci:release:test": "RELEASE_ENV=test ./bin/release.sh",
-    "ci:release:prod": "RELEASE_ENV=production ./bin/release.sh"
+    "ci:release:prod": "RELEASE_ENV=production ./bin/release.sh",
+    "ci:unrelease:test": "RELEASE_ENV=TEST ./bin/unrelease.sh",
+    "ci:unrelease:prod": "RELEASE_ENV=PROD ./bin/unrelease.sh"
   },
   "dependencies": {
     "react": "^18.2.0",

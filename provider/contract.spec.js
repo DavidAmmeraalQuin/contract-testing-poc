@@ -40,7 +40,7 @@ describe("Pact Verification", () => {
               branch: BRANCH,
             }
           : {
-              mainBranch: true,
+              deployedOrReleased: true,
             },
       ],
       includeWipPactsSince: "2020-01-01",
