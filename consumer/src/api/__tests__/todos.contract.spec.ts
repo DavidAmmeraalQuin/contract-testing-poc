@@ -83,44 +83,41 @@ xdescribe("DELETE /todos/:id", () => {
 const describeIf = (condition: boolean) => (condition ? describe : xdescribe);
 const xDescribeIf = (condition: boolean) => xdescribe;
 
-describeIf(featureFlags.getFeatureFlag("contract_create_todo"))(
-  "POST /todos",
-  () => {
-    beforeEach(() => {
-      provider
-        // This describes the server state at the moment of the request
-        .uponReceiving("a request to create a new todo")
-        .withRequest({
-          method: "POST",
-          path: "/todos",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          body: {
-            description: MatchersV3.like("some todo description"),
-          },
-        })
-        .willRespondWith({
-          status: 200,
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: {
-            id: MatchersV3.like("some-id"),
-          },
-        });
-    });
-
-    it("responds with HTTP 200", async () => {
-      await provider.executeTest(async (mockServer) => {
-        const todosService = new ToDosApi({ baseUrl: mockServer.url });
-
-        const result = await todosService.createTodo({
-          description: "some todo description",
-        });
-        expect(result.id).toBe("some-id");
+describe("POST /todos", () => {
+  beforeEach(() => {
+    provider
+      // This describes the server state at the moment of the request
+      .uponReceiving("a request to create a new todo")
+      .withRequest({
+        method: "POST",
+        path: "/todos",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: {
+          description: MatchersV3.like("some todo description"),
+        },
+      })
+      .willRespondWith({
+        status: 200,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: {
+          id: MatchersV3.like("some-id"),
+        },
       });
+  });
+
+  it("responds with HTTP 200", async () => {
+    await provider.executeTest(async (mockServer) => {
+      const todosService = new ToDosApi({ baseUrl: mockServer.url });
+
+      const result = await todosService.createTodo({
+        description: "some todo description",
+      });
+      expect(result.id).toBe("some-id");
     });
-  }
-);
+  });
+});
